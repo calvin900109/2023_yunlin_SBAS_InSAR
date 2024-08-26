@@ -27,7 +27,7 @@
             justify-content: space-between;
             width: 300px;
             font-size: 12px;
-            color: white;
+            color: black;
         }
         #layerToggle {
             position: absolute;
@@ -105,18 +105,29 @@
                 });
 
                 // Add a landmark marker with the name "Yunlin High-Speed Rail Station"
-                const marker = new atlas.HtmlMarker({
-                    position: [120.416389, 23.736389],  // Replace with the actual coordinates
+                const marker1 = new atlas.HtmlMarker({
+                    position: [120.416389, 23.736389],  // Coordinates for Yunlin High-Speed Rail Station
                     popup: new atlas.Popup({
                         content: '<div style="padding:5px;">雲林高鐵站</div>'
                     }),
                     icon: 'pin-round-blue'  // Use a supported icon type (e.g., 'pin-round-blue')
                 });
 
-                map.markers.add(marker);
+                // Add a second marker for "Chiayi High-Speed Rail Station"
+                const marker2 = new atlas.HtmlMarker({
+                    position: [120.323124, 23.459585],  // Coordinates for Chiayi High-Speed Rail Station
+                    popup: new atlas.Popup({
+                        content: '<div style="padding:5px;">嘉義高鐵站</div>'
+                    }),
+                    icon: 'pin-round-blue'  // Use a supported icon type (e.g., 'pin-round-blue')
+                });
 
-                // Automatically open the marker's popup
-                marker.togglePopup();
+                map.markers.add(marker1);
+                map.markers.add(marker2);
+
+                // Automatically open the marker popups
+                marker1.togglePopup();
+                marker2.togglePopup();
             })
             .catch(error => console.error('Error loading GeoJSON:', error));
     });
